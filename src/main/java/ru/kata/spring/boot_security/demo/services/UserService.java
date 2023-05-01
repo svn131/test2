@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
+import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
 import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
 import javax.transaction.Transactional;
@@ -20,11 +21,12 @@ import java.util.stream.Collectors;
 @Service
 public class UserService implements UserDetailsService {
     private UserRepository userRepository;
-
+    private RoleRepository roleRepository;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
+    public void setUserRepository(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     public User findByUsername(String username){
@@ -43,5 +45,19 @@ public class UserService implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
 return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
+    }
+
+    public void createRole(Role role) {
+        roleRepository.save(role);
+
+    }
+
+    public Role findRoleByName(String roleName) {
+       return roleRepository.findByName(roleName);
+
+    }
+
+    public void createUser(User user) {
+        userRepository.save(user);
     }
 }
