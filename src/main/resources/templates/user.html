@@ -4,8 +4,10 @@
     <title>Spring Security Example</title>
 </head>
 <body>
-<h1>User, welcome spring boot security page!</h1>
+<h1>Hello, <span th:text="${user.username}" />!</h1>
 
-
+<ul>
+    <li>Email: <span th:text="${user.email}" /></li>
+</ul>
 </body>
 </html>

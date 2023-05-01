@@ -16,6 +16,7 @@ import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,5 +60,9 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
 
     public void createUser(User user) {
         userRepository.save(user);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }
