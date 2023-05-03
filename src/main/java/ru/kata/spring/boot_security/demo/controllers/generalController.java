@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +27,12 @@ import java.util.List;
 public class generalController {
     private static final Logger logger = LoggerFactory.getLogger(generalController.class);
     private final UserService userService;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public generalController(UserService userService) {
+    public generalController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
-
+        this.passwordEncoder = (BCryptPasswordEncoder)passwordEncoder;
     }
 
 
