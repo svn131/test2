@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     User save(User user);
 
     List<User> findAll();
 
-  Optional<User> findById(Long id);
+    Optional<User> findById(Long id);
 
     void delete(User user);
 

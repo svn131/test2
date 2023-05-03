@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.services;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,14 +26,13 @@ public class UserService implements UserDetailsService {
     private RoleRepository roleRepository;
 
 
-
     @Autowired
     public void setUserRepository(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
 
-    public User findByUsername(String username){
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
@@ -42,15 +40,15 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
-        if(user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' ne naiden",username));
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("User '%s' ne naiden", username));
         }
         return (UserDetails) user;
-//        return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),mapRolesToAuthorities(user.getRoles()));
+
     }
 
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
-return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
 
     public void createRole(Role role) {
@@ -59,7 +57,7 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
     }
 
     public Role findRoleByName(String roleName) {
-       return roleRepository.findByName(roleName);
+        return roleRepository.findByName(roleName);
 
     }
 
@@ -72,7 +70,7 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
     }
 
     public User save(User user) {
-     return userRepository.save(user);
+        return userRepository.save(user);
     }
 
     public Optional<User> findById(Long id) {
@@ -80,15 +78,9 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
     }
 
 
-    public void deleteUser(User user){
+    public void deleteUser(User user) {
         userRepository.delete(user);
     }
-
-//
-//public List<Role> findAllRoles(){
-//      return   roleRepository.findAll();
-
-//}
 
 
 }

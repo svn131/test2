@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>User Info</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
 </form>
 <br>
 <form th:action="@{/logout}" method="post">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
     <br>
     <button type="submit">Logout</button>
 </form>

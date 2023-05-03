@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,26 +18,21 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
-import java.util.function.Supplier;
+
 
 @Controller
-public class AdminController {
-    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+public class generalController {
+    private static final Logger logger = LoggerFactory.getLogger(generalController.class);
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
-    public AdminController(UserService userService) {
+    public generalController(UserService userService) {
         this.userService = userService;
 
     }
-
-//    @GetMapping("/")
-//    public String homePage(){
-//        return "index";
-//    }
 
 
     @GetMapping("/admin")
@@ -49,14 +44,10 @@ public class AdminController {
 
 
     @GetMapping("/user")
-    public String user1(Model model, Authentication authentication) {
-        // Получение имени пользователя из объекта аутентификации
+    public String user(Model model, Authentication authentication) {
         String username = authentication.getName();
-        // Получение пользователя по его имени
         User user = userService.findByUsername(username);
-        // Добавление пользователя в модель
         model.addAttribute("user", user);
-        // Возвращение имени представления
         return "user";
     }
 
@@ -85,13 +76,13 @@ public class AdminController {
     }
 
     @PostMapping("/admin/edit")
-    public String editUser(@ModelAttribute("user") User user){
+    public String editUser(@ModelAttribute("user") User user) {
         userService.save(user);
         return "redirect:/admin";
     }
 
-    @PostMapping ("/admin/delete/{id}")
-    public String deleteUser(@ModelAttribute("user") User user){
+    @PostMapping("/admin/delete/{id}")
+    public String deleteUser(@ModelAttribute("user") User user) {
         userService.deleteUser(user);
         return "redirect:/admin";
     }
