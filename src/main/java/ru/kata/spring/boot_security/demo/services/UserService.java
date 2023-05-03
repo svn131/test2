@@ -84,8 +84,11 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
         userRepository.delete(user);
     }
 
+//
+//public List<Role> findAllRoles(){
+//      return   roleRepository.findAll();
 
-
+//}
 
 
 }

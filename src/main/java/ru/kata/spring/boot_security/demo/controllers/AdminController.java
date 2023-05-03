@@ -5,16 +5,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -22,10 +26,12 @@ import java.util.function.Supplier;
 public class AdminController {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     private final UserService userService;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     public AdminController(UserService userService) {
         this.userService = userService;
+
     }
 
 //    @GetMapping("/")
@@ -62,6 +68,11 @@ public class AdminController {
 
     @PostMapping("/admin/create")
     public String createUser(@ModelAttribute("user") User user) {
+        List<Role> roles = new ArrayList<>();
+        Role userRole = userService.findRoleByName("ROLE_USER");
+        roles.add(userRole);
+        user.setRoles(roles);
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Шифрование пароля
         userService.save(user);
         return "redirect:/admin";
     }
