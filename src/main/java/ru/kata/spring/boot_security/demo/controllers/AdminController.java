@@ -1,5 +1,7 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +20,7 @@ import java.util.function.Supplier;
 
 @Controller
 public class AdminController {
-
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     private final UserService userService;
 
     @Autowired
@@ -39,10 +41,16 @@ public class AdminController {
         return "admin";
     }
 
+
     @GetMapping("/user")
-    public String user(Model model, Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
+    public String user1(Model model, Authentication authentication) {
+        // Получение имени пользователя из объекта аутентификации
+        String username = authentication.getName();
+        // Получение пользователя по его имени
+        User user = userService.findByUsername(username);
+        // Добавление пользователя в модель
         model.addAttribute("user", user);
+        // Возвращение имени представления
         return "user";
     }
 

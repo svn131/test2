@@ -48,9 +48,12 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Transactional
     void createRoleIfNotFound(String name) {
-        Role role = new Role();
-        role.setName(name);
-        userService.createRole(role);
+        Role role = userService.findRoleByName(name);
+        if (role == null) {
+            role = new Role();
+            role.setName(name);
+            userService.createRole(role);
+        }
     }
 
     @Transactional
