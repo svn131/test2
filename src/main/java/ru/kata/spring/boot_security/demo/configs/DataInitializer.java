@@ -9,10 +9,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import org.springframework.core.annotation.Order;
+import ru.kata.spring.boot_security.demo.entities.User;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+
 
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
@@ -51,7 +55,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Transactional
     void createUserIfNotFound(String username, String password, String email, List<String> roles) {
-        User user = userService.findByUsername(username);
+      User user = userService.findByUsername(username);
         if (user == null) {
             user = new User();
             user.setUsername(username);
