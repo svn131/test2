@@ -40,8 +40,8 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         createRoleIfNotFound("ROLE_ADMIN");
         createRoleIfNotFound("ROLE_USER");
 
-        createUserIfNotFound("user", "pass", "john.doe@example.com", Arrays.asList("ROLE_USER"));
-        createUserIfNotFound("admin", "pass", "admin@example.com", Arrays.asList("ROLE_ADMIN"));
+        createUserIfNotFound("user", "1111", "john.doe@example.com", Arrays.asList("ROLE_USER"));
+        createUserIfNotFound("admin", "1111", "admin@example.com", Arrays.asList("ROLE_ADMIN"));
 
         alreadySetup = true;
     }

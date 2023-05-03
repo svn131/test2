@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
-    <title>Spring Security Example</title>
+    <meta charset="UTF8"/>
+    <title>User Page</title>
 </head>
 <body>
-<h1>Hello, <span th:text="${user.username}" />!</h1>
 
-<ul>
-    <li>Email: <span th:text="${user.email}" /></li>
-</ul>
+<!--<h1>Welcome, <span sec:authentication="name">[[${#authentication.principal.username}]]</span>!</h1>-->
+
+<!--<h2>Your email: <span sec:authentication="principal.email">[[${#authentication.principal.email}]]</span></h2>-->
+<h1>Welcome, <span sec:authentication="name">User</span>!</h1>
+
+<h2>Your email: <span sec:authentication="principal.email">user@example.com</span></h2>
+
+<a href="/" th:href="@{/}">Home</a>
+
+<form th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <button type="submit">Logout</button>
+</form>
 </body>
 </html>

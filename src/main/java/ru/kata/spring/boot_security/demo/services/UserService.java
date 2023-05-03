@@ -3,7 +3,6 @@ package ru.kata.spring.boot_security.demo.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +17,7 @@ import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -27,7 +27,8 @@ public class UserService implements UserDetailsService {
     private RoleRepository roleRepository;
 
 
- @Autowired
+
+    @Autowired
     public void setUserRepository(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -69,4 +70,22 @@ return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    public User save(User user) {
+     return userRepository.save(user);
+    }
+
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+
+    public void deleteUser(User user){
+        userRepository.delete(user);
+    }
+
+
+
+
+
 }
