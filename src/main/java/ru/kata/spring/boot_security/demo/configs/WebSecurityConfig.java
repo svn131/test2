@@ -31,7 +31,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
+
                 .formLogin().successHandler(successUserHandler)
+                .loginPage("/login") // указываем свой маршрут для страницы входа
+//                .defaultSuccessUrl("/user") // указываем маршрут для перенаправления после успешной аутентификации
+                .failureUrl("/login?error") // указываем маршрут для перенаправления после неудачной аутентификации
+
                 .permitAll()
                 .and()
                 .logout()

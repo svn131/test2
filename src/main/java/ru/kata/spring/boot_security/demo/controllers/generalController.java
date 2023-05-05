@@ -44,13 +44,7 @@ public class generalController {
     }
 
 
-    @GetMapping("/user")
-    public String user(Model model, Authentication authentication) {
-        String username = authentication.getName();
-        User user = userService.findByUsername(username);
-        model.addAttribute("user", user);
-        return "user";
-    }
+
 
     @GetMapping("/admin/create")
     public String showCreateUserForm(Model model) {
