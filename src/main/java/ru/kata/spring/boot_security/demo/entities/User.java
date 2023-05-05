@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Data
-@Table(name = "users", schema = "katashema")
+@Table(name = "users", schema = "shema314")
 public class User implements UserDetails {
 
     @Id
@@ -26,12 +26,18 @@ public class User implements UserDetails {
 
     private String email;
 
+    private String firstName;
+
+    private String lastName;
+
+    private Long age;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"),
-            schema = "katashema"
+            schema = "shema314"
     )
     private Collection<Role> roles;
 
