@@ -22,6 +22,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
+
     @Autowired
     public DataInitializer(PasswordEncoder passwordEncoder, UserService userService) {
         this.userService = userService;

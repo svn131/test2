@@ -38,20 +38,17 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    @Override
+
     @Transactional
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
         User user = findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' ne naiden",email));
+            throw new UsernameNotFoundException(String.format("User '%s' not found", email));
         }
-        return (UserDetails) user;
-
+        return user;
     }
 
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
-    }
+
 
     public void createRole(Role role) {
         roleRepository.save(role);
@@ -85,10 +82,13 @@ public class UserService implements UserDetailsService {
     }
 
 
-    public User findByEmail(String email){
-      return userRepository.findByEmail(email);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
 }
-
