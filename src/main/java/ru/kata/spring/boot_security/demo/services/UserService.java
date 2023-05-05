@@ -34,6 +34,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User findByUsername(String username) {
+
         return userRepository.findByUsername(username);
     }
 
@@ -81,6 +82,11 @@ public class UserService implements UserDetailsService {
 
     public void deleteUser(User user) {
         userRepository.delete(user);
+    }
+
+
+    public User findByEmail(String email){
+      return userRepository.findByEmail(email);
     }
 
 
