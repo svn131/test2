@@ -40,10 +40,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findByUsername(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException(String.format("User '%s' ne naiden", username));
+            throw new UsernameNotFoundException(String.format("User '%s' ne naiden",email));
         }
         return (UserDetails) user;
 

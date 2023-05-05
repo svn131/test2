@@ -553,3 +553,45 @@ Identify and stop the process that's listening on port 8190 or configure this ap
 2023-05-05 21:55:01.600  INFO 41812 --- [http-nio-8190-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-05-05 21:55:01.601  INFO 41812 --- [http-nio-8190-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2023-05-05 21:55:01.602  INFO 41812 --- [http-nio-8190-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-05-05 21:57:50.396  INFO 41812 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-05 21:57:50.396  INFO 41812 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2023-05-05 21:57:50.438  INFO 41812 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-05 21:57:50.440  INFO 41812 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-05 21:58:25.140  INFO 24120 --- [restartedMain] .s.b.d.SpringBootSecurityDemoApplication : Starting SpringBootSecurityDemoApplication using Java 19.0.2 on lan with PID 24120 (C:\PoektyKata\3_1_42\target\classes started by svn13 in C:\PoektyKata\3_1_42)
+2023-05-05 21:58:25.141  INFO 24120 --- [restartedMain] .s.b.d.SpringBootSecurityDemoApplication : No active profile set, falling back to default profiles: default
+2023-05-05 21:58:25.174  INFO 24120 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-05-05 21:58:25.174  INFO 24120 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-05-05 21:58:25.636  INFO 24120 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-05 21:58:25.680  INFO 24120 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 2 JPA repository interfaces.
+2023-05-05 21:58:26.133  INFO 24120 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8190 (http)
+2023-05-05 21:58:26.140  INFO 24120 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-05-05 21:58:26.141  INFO 24120 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2023-05-05 21:58:26.205  INFO 24120 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-05-05 21:58:26.205  INFO 24120 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1031 ms
+2023-05-05 21:58:26.340  INFO 24120 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-05 21:58:26.379  INFO 24120 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2023-05-05 21:58:26.496  INFO 24120 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-05-05 21:58:26.570  INFO 24120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-05 21:58:26.663  INFO 24120 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-05 21:58:26.680  INFO 24120 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2023-05-05 21:58:27.140  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-05 21:58:27.140  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "users_roles" не существует, пропускается
+2023-05-05 21:58:27.141  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-05 21:58:27.141  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : отношение "users_roles" не существует, пропускается
+2023-05-05 21:58:27.141  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-05 21:58:27.142  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "roles" не существует, пропускается
+2023-05-05 21:58:27.142  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-05 21:58:27.142  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "users" не существует, пропускается
+2023-05-05 21:58:27.142  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-05-05 21:58:27.142  WARN 24120 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : таблица "users_roles" не существует, пропускается
+2023-05-05 21:58:27.187  INFO 24120 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-05 21:58:27.194  INFO 24120 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-05 21:58:27.482  WARN 24120 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-05 21:58:27.598  INFO 24120 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19b434ac, org.springframework.security.web.context.SecurityContextPersistenceFilter@98af29d, org.springframework.security.web.header.HeaderWriterFilter@24bfb1ef, org.springframework.security.web.csrf.CsrfFilter@20fe92d6, org.springframework.security.web.authentication.logout.LogoutFilter@281a206, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2d4a635, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4de0021d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@33ea221c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@bd703f8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e0d9658, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@429b8876, org.springframework.security.web.session.SessionManagementFilter@f6445ae, org.springframework.security.web.access.ExceptionTranslationFilter@5ee967ca, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2030310e]
+2023-05-05 21:58:27.723  INFO 24120 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-05-05 21:58:27.836  INFO 24120 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-05-05 21:58:27.882  INFO 24120 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8190 (http) with context path ''
+2023-05-05 21:58:28.196  INFO 24120 --- [restartedMain] .s.b.d.SpringBootSecurityDemoApplication : Started SpringBootSecurityDemoApplication in 3.335 seconds (JVM running for 3.851)
+2023-05-05 21:58:32.080  INFO 24120 --- [http-nio-8190-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-05-05 21:58:32.081  INFO 24120 --- [http-nio-8190-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-05-05 21:58:32.081  INFO 24120 --- [http-nio-8190-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
