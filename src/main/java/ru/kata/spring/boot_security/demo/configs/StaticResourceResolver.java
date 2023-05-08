@@ -55,3 +55,4 @@ public class StaticResourceResolver implements ResourceResolver {
         return null;
     }
 }
+
