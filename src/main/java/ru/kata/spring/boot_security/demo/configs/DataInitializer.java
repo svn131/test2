@@ -3,6 +3,7 @@ package ru.kata.spring.boot_security.demo.configs;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
+import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -24,7 +25,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
 
     @Autowired
-    public DataInitializer(PasswordEncoder passwordEncoder, UserService userService) {
+    public DataInitializer(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
