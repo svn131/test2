@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
-import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
+
 
 @Controller
 public class UserController {
@@ -17,7 +17,7 @@ public class UserController {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserServiceImpl userService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = (BCryptPasswordEncoder)passwordEncoder;
     }

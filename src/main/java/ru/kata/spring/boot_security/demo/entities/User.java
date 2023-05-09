@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -32,20 +34,20 @@ public class User implements UserDetails {
 
     private Long age;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"),
             schema = "shema314"
     )
-    private Collection<Role> roles;
+    private Set<Role> roles;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Set<GrantedAuthority> getAuthorities() {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -68,6 +70,19 @@ public class User implements UserDetails {
         return true;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId().equals(user.getId()) && getPassword().equals(user.getPassword()) && getEmail().equals(user.getEmail()) && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName()) && getAge().equals(user.getAge()) && getRoles().equals(user.getRoles());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getPassword(), getEmail(), getFirstName(), getLastName(), getAge(), getRoles());
+    }
 }
 
 
