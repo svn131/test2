@@ -3,7 +3,7 @@ package ru.kata.spring.boot_security.demo.init;
 import ru.kata.spring.boot_security.demo.entities.Role;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
-import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component;
 
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 
 @Component
@@ -25,7 +23,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
 
     @Autowired
-    public DataInitializer(PasswordEncoder passwordEncoder, UserServiceImpl userService) {
+    public DataInitializer(PasswordEncoder passwordEncoder, UserService userService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -70,7 +68,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
             user.setPassword(passwordEncoder.encode(password));
             user.setEmail(email);
-            List<Role> userRoles = new ArrayList<>();
+            Set<Role> userRoles = new HashSet<>();
             for (String roleName : roles) {
                 Role role = userService.findRoleByName(roleName);
                 if (role != null) {

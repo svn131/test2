@@ -26,4 +26,11 @@ public interface UserService extends UserDetailsService {
 
     UserDetails  loadUserByEmail (String username);
 
+    void createRole(Role role);
+
+    Role findRoleByName(String roleName);
+
+    void createUser(User user);
+
+    User findByEmail(String email);
 }
